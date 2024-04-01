@@ -1,3 +1,9 @@
+<?php include 'conexion.php'; ?>
+<?php
+    //Crear y seleccionar query
+    $query = "SELECT * FROM clientes ORDER BY cedula DESC";
+    $clientes = mysqli_query($con, $query);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +32,19 @@
           </tr>
         </thead>
         <tbody>
+        <?php while($fila = mysqli_fetch_assoc($clientes)) : ?>
+                        <tr class="tr-row" style="font-size: smaller">
+                            <td scope="row"><?php echo $fila['cedula']; ?></td>
+                            <td scope="row"><?php echo $fila['nombre']; ?></td>
+                            <td scope="row"><?php echo $fila['email']; ?></td>
+                            <td scope="row"><?php echo $fila['telefono']; ?></td>
+                            <td scope="row"><?php echo $fila['direccion']; ?></td>
+                            <td scope="row">
+                            <a href="borrar.php?id=<?php echo $fila['cedula']; ?>" class="btn btn-danger"> Borrar</a>
+                            </td>
+                        </tr> 
+
+                        <?php endwhile; ?>
           <tr class="tr-row" style="font-size: smaller">
             <th scope="row">1016944232</th>
             <td class="tdd">Sara Daniela Vargas Martinez</td>
