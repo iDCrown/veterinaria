@@ -3,6 +3,26 @@
     //Crear y seleccionar query
     $query = "SELECT * FROM clientes ORDER BY cedula DESC";
     $clientes = mysqli_query($con, $query);
+
+    if(isset($_POST['borrar'])){        
+
+      $idRegistro = $_POST['cedula'];
+      //Validar si no están vacíos
+      $query = "DELETE FROM clientes where cedula='$idRegistro'";
+
+          if(!mysqli_query($con, $query)){
+            
+              die('Error: ' . mysqli_error($con));
+              $error = "Error, no se pudo crear el registros";
+          }else{
+              $mensaje = "Registro borrado correctamente";
+              header('Location: index.php?mensaje='.urlencode($mensaje));
+              exit();
+          }
+  }
+
+  
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +52,7 @@
           </tr>
         </thead>
         <tbody>
-        <?php while($fila = mysqli_fetch_assoc($clientes)) : ?>
+        <?php while ( $fila = mysqli_fetch_assoc($clientes)) : ?>
                         <tr class="tr-row" style="font-size: smaller">
                             <td scope="row"><?php echo $fila['cedula']; ?></td>
                             <td scope="row"><?php echo $fila['nombre']; ?></td>
@@ -40,8 +60,10 @@
                             <td scope="row"><?php echo $fila['telefono']; ?></td>
                             <td scope="row"><?php echo $fila['direccion']; ?></td>
                             <td scope="row">
-                            <a href="borrar.php?id=<?php echo $fila['cedula']; ?>" class="btn btn-danger"> Borrar</a>
-                            </td>
+                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                                <input type="hidden" name="cedula" value="<?php echo $fila['cedula']; ?>">
+                                <button type="submit" class="btn btn-warning w-100" name="borrar">Borrar</button>
+                            </form>
                         </tr> 
 
                         <?php endwhile; ?>
