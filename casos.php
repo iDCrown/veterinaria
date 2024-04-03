@@ -102,22 +102,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CREAR</title>
-    <link rel="stylesheet" href="./css/casos.css">
-    <link rel="stylesheet" href="./css/crear.css">
+    <link rel="stylesheet" href="./casos.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-   
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  </head>
 <body>
   <div class="containerr text-center">
     <div class="row content align-items-center">
-      <div class="col clientes">
+      <div class="col col-5 clientes">
         <h2 class="fs-2"><?php echo $fila['nombre']; ?></h2>
         <p class="parraf">Datos del cliente</p>
         <div style="margin-bottom: 8em">
@@ -146,37 +145,37 @@
         <div class="buton">
           <button type="button" class="btn-brown" data-bs-toggle="modal" data-bs-target="#exampleModal" >Editar</button>
         </div>
-        
+      <!-- MODAL -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Cliente</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
                 
-                <form class="conteiner-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                <form class="conteiner-modal" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
                   <div class="forml1">
                     <div class="first mb-3">
-                      <label for="cedula" class="form-label">Cedula</label>
+                      <label for="cedula" class="form-labe">Cedula</label>
                       <input type="number" class="for" name="cedula" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $fila['cedula']; ?>">
                     </div>
                     <div class="first mb-3">
-                      <label for="nombre" class="form-label">Nombre Completo</label>
+                      <label for="nombre" class="form-labe">Nombre Completo</label>
                       <input type="text" class=" for" name="nombre" id="exampleInputPassword1"  value="<?php echo $fila['nombre']; ?>">
                     </div>
                   </div>
                   <div class="mb-3">
-                    <label for="email" class="form-label">Correo Electronico</label>
+                    <label for="email" class="form-labe">Correo Electronico</label>
                     <input type="email" class="for b1" name="email" id="exampleInputPassword1"  value="<?php echo $fila['email']; ?>">
                   </div>
                   <div class="mb-3">
-                    <label for="telefono" class="form-label">Numero Telefonico</label>
+                    <label for="telefono" class="form-labe">Numero Telefonico</label>
                     <input type="number" class="for b2" name="telefono" id="exampleInputPassword1"  value="<?php echo $fila['telefono']; ?>">
                   </div>
                   <div class="mb-3">
-                    <label for="direccion" class="form-label">Dirección</label>
+                    <label for="direccion" class="form-labe">Dirección</label>
                     <input type="text" class="for b3" name="direccion" id="exampleInputPassword1"  value="<?php echo $fila['direccion']; ?>">
                   </div>
 
@@ -193,8 +192,68 @@
 
 
       </div>
-      <div class="col caso">
-        One of three columns
+      <div class="col background">
+        <h2 class="h2_crear">Caso</h2>
+        <p class="p_crear" >Ingrese la información del Caso</p>
+        <div style="margin-top: 22px">  
+          <form class="conteiner-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+
+            <div class="forml1">
+              <div class="first mb-3">
+                <label for="cedula" class="form-label">Expediente</label>
+                <input type="number" class="for" name="cedula" id="exampleInputEmail1" aria-describedby="emailHelp">
+              </div>
+              <div class="first mb-3">
+                <label for="nombre" class="form-label">Abogado Encargado*</label>
+                <select class="form-select for" aria-label="Default select example">
+                  <option selected>Abogado</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+              </select>
+              </div>
+            </div>
+
+            <div class="forml1">
+              <div class="first mb-3">
+                <label for="nombre" class="form-label">Fecha de Inicio</label>
+                <input type="date" class=" for"  name="dateFirst">
+              </div>
+              <div class="first mb-3">
+                
+                <label for="nombre" class="form-label">Fecha de Finalización</label>
+                <input type="date" class=" for"  name="dateFirst">
+              </div>
+            </div>
+
+            <div class="forml1">
+              <div class="first mb-3">
+              <label for="nombre" class="form-label">Tipo del Caso</label>
+                <select class="form-select  for" aria-label="Default select example">
+                  <option value="1">Legislativo</option>
+                  <option value="2">criminología</option>
+                  <option value="3">fiscal</option>
+              </select>
+              </div>
+
+              <div class="first mb-3">
+              <label for="nombre" class="form-label">Estado del caso</label>
+                <select class="form-select  for" aria-label="Default select example">
+                  <option value="1">Abierto</option>
+                  <option value="2">Cerrado</option>
+                  <option value="3">Escalado</option>
+                  <option value="3">Cancelado</option>
+              </select>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Descripcion del caso</label>
+              <textarea class="form-control " style="background: #fef0dc; margin-bottom: 2em;" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn-brown warning" name="enviar">Enviar</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
