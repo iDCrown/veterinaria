@@ -10,18 +10,16 @@
       //Validar si no están vacíos
       $query = "DELETE FROM clientes where cedula='$idRegistro'";
 
-          if(!mysqli_query($con, $query)){
-            
-              die('Error: ' . mysqli_error($con));
-              $error = "Error, no se pudo crear el registros";
-          }else{
-              $mensaje = "Registro borrado correctamente";
-              header('Location: index.php?mensaje='.urlencode($mensaje));
-              exit();
-          }
-  }
-
-  
+        if(!mysqli_query($con, $query)){
+        
+          die('Error: ' . mysqli_error($con));
+          $error = "Error, no se pudo crear el registros";
+        }else{
+          $mensaje = "Registro borrado correctamente";
+          header('Location: index.php?mensaje='.urlencode($mensaje));
+          exit();
+        }
+    }
 
 ?>
 <!DOCTYPE html>
@@ -53,41 +51,23 @@
         </thead>
         <tbody>
         <?php while ( $fila = mysqli_fetch_assoc($clientes)) : ?>
-                        <tr class="tr-row" style="font-size: smaller">
-                            <td scope="row"><?php echo $fila['cedula']; ?></td>
-                            <td scope="row"><?php echo $fila['nombre']; ?></td>
-                            <td scope="row"><?php echo $fila['email']; ?></td>
-                            <td scope="row"><?php echo $fila['telefono']; ?></td>
-                            <td scope="row"><?php echo $fila['direccion']; ?></td>
-                            <td scope="row">
-                            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-                                <input type="hidden" name="cedula" value="<?php echo $fila['cedula']; ?>">
-                                <button type="submit" class="btn btn-warning w-100" name="borrar">Borrar</button>
-                            </form>
-                        </tr> 
-
-                        <?php endwhile; ?>
           <tr class="tr-row" style="font-size: smaller">
-            <th scope="row">1016944232</th>
-            <td class="tdd">Sara Daniela Vargas Martinez</td>
-            <td class="tdd">sadaran.vm@gmail.com</td>
-            <td class="tdd">3193165506</td>
-            <td class="tdd">calle 65b #88-59</td>
-          </tr>
-          <tr class="tr-row" style="font-size: smaller">
-            <th scope="row">1016944232</th>
-            <td class="tdd">Sara Daniela Vargas Martinez</td>
-            <td class="tdd">sadaran.vm@gmail.com</td>
-            <td class="tdd">3193165506</td>
-            <td class="tdd">calle 65b #88-59</td>
-          </tr>
-          <tr class="tr-row" >
-            <th scope="row">1016944232</th>
-            <td class="tdd">Sara Daniela Vargas Martinez</td>
-            <td class="tdd">sadaran.vm@gmail.com</td>
-            <td class="tdd">3193165506</td>
-            <td class="tdd">calle 65b #88-59</td>
-          </tr>
+            <td scope="row">
+              <a href="casos.php?cedula=<?php echo $fila['cedula']; ?>">
+                <?php echo $fila['cedula']; ?>
+              </a>
+            </td>
+            <td scope="row"><?php echo $fila['nombre']; ?></td>
+            <td scope="row"><?php echo $fila['email']; ?></td>
+            <td scope="row"><?php echo $fila['telefono']; ?></td>
+            <td scope="row"><?php echo $fila['direccion']; ?></td>
+            <td scope="row">
+            <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+              <input type="hidden" name="cedula" value="<?php echo $fila['cedula']; ?>">
+              <button type="submit" class="btn btn-warning w-100" name="borrar">Borrar</button>
+            </form>
+          </tr> 
+          <?php endwhile; ?>
         </tbody>
       </table>
     </div>  
