@@ -1,57 +1,14 @@
 <?php
-    //Incluimos conexión
-    // include 'conexion.php';
-
-    //Obtener el id enviado de index
-    // $idRegistro = $_GET['cedula'];
-
-    //Seleccionar datos
-    // $query = "SELECT * FROM clientes WHERE cedula='$idRegistro'";
-    // $clientes = mysqli_query($con, $query) or die (mysqli_error());
-
-    //Volcamos los datos de ese registro en una fila
-    // $fila = mysqli_fetch_assoc($clientes);
-
-
-    // if(isset($_POST['editarRegistro'])){
-    //     $cedula = mysqli_real_escape_string($con, $_POST['cedula']);
-    //     $nombre = mysqli_real_escape_string($con, $_POST['nombre']);
-    //     $email = mysqli_real_escape_string($con, $_POST['email']);
-    //     $telefono = mysqli_real_escape_string($con, $_POST['telefono']);
-    //     $direccion = mysqli_real_escape_string($con, $_POST['direccion']);
-
-        //Configurar tiempo zona horaria
-        // date_default_timezone_set('America/Bogota');
-        // $time = date('h:i:s a', time());
-
-        //Validar si no están vacíos
-//         if(!empty($cedula) && !empty($nombre) && !empty($email) && !empty($telefono) && !empty($direccion)){
-
-//         }else{
-//             $query = "UPDATE clientes SET  nombre='$nombre', direccion='$direccion', telefono='$telefono', email='$email' where cedula='$cedula'";
-
-//             if(!mysqli_query($con, $query)){
-//                 die('Error: ' . mysqli_error($con));
-//                 $error = "Error, no se pudo crear el registros";
-//             }else{
-//                 $mensaje = "Registro editado correctamente";
-//                 header('Location: index.php?mensaje='.urlencode($mensaje));
-//                 exit();
-//             }
-//         }
-
-//     }
-    
-
-// ?>
-
-
-<?php
     // Incluimos conexión
     include 'conexion.php';
 
     // Obtener el ID del cliente de la URL
-    $idRegistro = $_GET['cedula'];
+    $idRegistro = $_POST['cedula'];
+    $idMostrar = $_GET['cedula'];
+
+
+// Generar un número de expediente aleatorio
+    $expediente = rand(1000, 9999);
 
     // Verificar si se ha enviado el formulario de edición
     if(isset($_POST['editarRegistro'])){
@@ -84,7 +41,7 @@
     }
 
     // Seleccionar datos del cliente
-    $query = "SELECT * FROM clientes WHERE cedula='$idRegistro'";
+    $query = "SELECT * FROM clientes WHERE cedula='$idMostrar'";
     $result = mysqli_query($con, $query);
 
     // Verificar si se encontró el cliente
@@ -93,6 +50,41 @@
     } else {
         $error = "Cliente no encontrado";
     }
+
+
+
+    if(isset($_POST['enviarCaso'])){
+      $expediente = mysqli_real_escape_string($con, $_POST['expediente']);
+      $fechaini = mysqli_real_escape_string($con, $_POST['fechaini']);
+      $fechafz = mysqli_real_escape_string($con, $_POST['fechafz']);
+      $tipoCaso = mysqli_real_escape_string($con, $_POST['tipoCaso']);
+      $estado = mysqli_real_escape_string($con, $_POST['estado']);
+      $descripcion = mysqli_real_escape_string($con, $_POST['descripcion']);
+
+      //Configurar tiempo zona horaria
+      date_default_timezone_set('America/Bogota');
+      $time = date('h:i:s a', time());
+
+      //Validar si no están vacíos
+      if(!isset($expediente) || $expediente == '' || !isset($fechaini) || $fechaini == '' || !isset($fechafz) || $fechafz == '' || !isset($tipoCaso) || $tipoCaso == '' || !isset($estado) || $estado == '' || !isset($descripcion) || $descripcion == ''){
+          $error = "Algunos campos están vacíos";
+      }else{
+          $query = "INSERT INTO casos(expediente, fechafz, fechaini, tipoCaso, estado, descripcion)VALUES('$expediente', '$fechafz', '$fechaini', '$tipoCaso', '$estado', '$descripcion')";
+
+          if(!mysqli_query($con, $query)){
+              die('Error: ' . mysqli_error($con));
+              $error = "Error, no se pudo crear el registro";
+          }else{
+              $mensaje = "Registro creado correctamente";
+              header('Location: index.php?mensaje='.urlencode($mensaje));
+              exit();
+          }
+      }
+
+  }
+
+
+
 ?>
 
 
@@ -192,6 +184,7 @@
 
 
       </div>
+      
       <div class="col background">
         <h2 class="h2_crear">Caso</h2>
         <p class="p_crear" >Ingrese la información del Caso</p>
@@ -200,36 +193,28 @@
 
             <div class="forml1">
               <div class="first mb-3">
-                <label for="cedula" class="form-label">Expediente</label>
-                <input type="number" class="for" name="cedula" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <label for="expediente" class="form-label">Expediente</label>
+                <input type="number" class="for" name="expediente" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $expediente; ?>">
               </div>
-              <div class="first mb-3">
-                <label for="nombre" class="form-label">Abogado Encargado*</label>
-                <select class="form-select for" aria-label="Default select example">
-                  <option selected>Abogado</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-              </select>
-              </div>
+           
             </div>
 
             <div class="forml1">
               <div class="first mb-3">
-                <label for="nombre" class="form-label">Fecha de Inicio</label>
-                <input type="date" class=" for"  name="dateFirst">
+                <label for="fechaini" class="form-label">Fecha de Inicio</label>
+                <input type="date" class=" for"  name="fechaini">
               </div>
               <div class="first mb-3">
                 
-                <label for="nombre" class="form-label">Fecha de Finalización</label>
-                <input type="date" class=" for"  name="dateFirst">
+                <label for="fechafz" class="form-label">Fecha de Finalización</label>
+                <input type="date" class=" for"  name="fechafz">
               </div>
             </div>
 
             <div class="forml1">
               <div class="first mb-3">
-              <label for="nombre" class="form-label">Tipo del Caso</label>
-                <select class="form-select  for" aria-label="Default select example">
+              <label for="tipoCaso" class="form-label">Tipo del Caso</label>
+                <select class="form-select  for" name="tipoCaso" aria-label="Default select example">
                   <option value="1">Legislativo</option>
                   <option value="2">criminología</option>
                   <option value="3">fiscal</option>
@@ -237,8 +222,8 @@
               </div>
 
               <div class="first mb-3">
-              <label for="nombre" class="form-label">Estado del caso</label>
-                <select class="form-select  for" aria-label="Default select example">
+              <label for="estado" class="form-label">Estado del caso</label>
+                <select class="form-select  for" name="estado" aria-label="Default select example">
                   <option value="1">Abierto</option>
                   <option value="2">Cerrado</option>
                   <option value="3">Escalado</option>
@@ -249,9 +234,9 @@
 
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Descripcion del caso</label>
-              <textarea class="form-control " style="background: #fef0dc; margin-bottom: 2em;" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control " name="descripcion" style="background: #fef0dc; margin-bottom: 2em;" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
-            <button type="submit" class="btn-brown warning" name="enviar">Enviar</button>
+            <button type="submit" class="btn-brown warning" name="enviarCaso">Enviar</button>
           </form>
         </div>
       </div>
