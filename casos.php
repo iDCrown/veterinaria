@@ -3,15 +3,16 @@
     include 'conexion.php';
 
     // Obtener el ID del cliente de la URL
-    $idRegistro = $_POST['cedula'];
+    
+    
+
     $idMostrar = $_GET['cedula'];
-
-
 // Generar un número de expediente aleatorio
     $expediente = rand(1000, 9999);
 
     // Verificar si se ha enviado el formulario de edición
     if(isset($_POST['editarRegistro'])){
+      $idRegistro = $_POST['cedula'];
         // Obtener los datos del formulario
         $cedula = mysqli_real_escape_string($con, $_POST['cedula']);
         $nombre = mysqli_real_escape_string($con, $_POST['nombre']);
@@ -43,9 +44,10 @@
     // Seleccionar datos del cliente
     $query = "SELECT * FROM clientes WHERE cedula='$idMostrar'";
     $result = mysqli_query($con, $query);
-
+    
     // Verificar si se encontró el cliente
     if(mysqli_num_rows($result) > 0){
+      
         $fila = mysqli_fetch_assoc($result);
     } else {
         $error = "Cliente no encontrado";
