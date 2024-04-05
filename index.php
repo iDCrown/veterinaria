@@ -44,7 +44,7 @@
 
     // ABOGADOS
     if(isset($_POST['enviarAbogado'])){
-      $cedula = mysqli_real_escape_string($con, $_POST['cedula']);
+      $idAbogado = mysqli_real_escape_string($con, $_POST['idAbogado']);
       $nombre = mysqli_real_escape_string($con, $_POST['nombre']);
       $email = mysqli_real_escape_string($con, $_POST['email']);
       $telefono = mysqli_real_escape_string($con, $_POST['telefono']);
@@ -55,10 +55,10 @@
       $time = date('h:i:s a', time());
 
       //Validar si no están vacíos
-      if(!isset($cedula) || $cedula == '' || !isset($nombre) || $nombre == '' || !isset($telefono) || $telefono == '' || !isset($email) || $email == '' || !isset($direccion) || $direccion == ''){
+      if(!isset($idAbogado) || $idAbogado == '' || !isset($nombre) || $nombre == '' || !isset($telefono) || $telefono == '' || !isset($email) || $email == '' || !isset($direccion) || $direccion == ''){
           $error = "Algunos campos están vacíos";
       }else{
-          $query = "INSERT INTO abogados(cedula, nombre, email, telefono, direccion)VALUES('$cedula', '$nombre', '$email', '$telefono', '$direccion')";
+          $query = "INSERT INTO abogado(idAbogado, nombre, email, telefono, direccion)VALUES('$idAbogado', '$nombre', '$email', '$telefono', '$direccion')";
 
           if(!mysqli_query($con, $query)){
               die('Error: ' . mysqli_error($con));
@@ -179,7 +179,7 @@
               <div class="forml1">
                 <div class="first mb-3">
                   <label for="cedula" class="form-label">Cedula</label>
-                  <input type="number" class="for" name="cedula" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <input type="number" class="for" name="idAbogado" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="first mb-3">
                   <label for="nombre" class="form-label">Nombre Completo</label>

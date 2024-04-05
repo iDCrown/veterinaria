@@ -1,7 +1,7 @@
 <?php 
 
     //Conectar a Mysql
-    $con = mysqli_connect("localhost", "root", "", "Abogados");
+    $con = mysqli_connect("localhost", "root", "", "abogados");
 
     //Probar conexión
     if(mysqli_connect_errno()){

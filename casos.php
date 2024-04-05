@@ -6,13 +6,13 @@
     
     
 
-    $idMostrar = $_GET['cedula'];
+    $idRegistro = $_GET['cedula'];
 // Generar un número de expediente aleatorio
     $expediente = rand(1000, 9999);
 
     // Verificar si se ha enviado el formulario de edición
     if(isset($_POST['editarRegistro'])){
-      $idRegistro = $_POST['cedula'];
+      //$idRegistro = $_POST['cedula'];
         // Obtener los datos del formulario
         $cedula = mysqli_real_escape_string($con, $_POST['cedula']);
         $nombre = mysqli_real_escape_string($con, $_POST['nombre']);
@@ -42,7 +42,7 @@
     }
 
     // Seleccionar datos del cliente
-    $query = "SELECT * FROM clientes WHERE cedula='$idMostrar'";
+    $query = "SELECT * FROM clientes WHERE cedula='$idRegistro'";
     $result = mysqli_query($con, $query);
     
     // Verificar si se encontró el cliente
