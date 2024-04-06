@@ -49,6 +49,8 @@
       $email = mysqli_real_escape_string($con, $_POST['email']);
       $telefono = mysqli_real_escape_string($con, $_POST['telefono']);
       $direccion = mysqli_real_escape_string($con, $_POST['direccion']);
+      $direccion = mysqli_real_escape_string($con, $_POST['direccion']);
+
 
       //Configurar tiempo zona horaria
       date_default_timezone_set('America/Bogota');
@@ -58,7 +60,7 @@
       if(!isset($idAbogado) || $idAbogado == '' || !isset($nombre) || $nombre == '' || !isset($telefono) || $telefono == '' || !isset($email) || $email == '' || !isset($direccion) || $direccion == ''){
           $error = "Algunos campos están vacíos";
       }else{
-          $query = "INSERT INTO abogado(idAbogado, nombre, email, telefono, direccion)VALUES('$idAbogado', '$nombre', '$email', '$telefono', '$direccion')";
+          $query = "INSERT INTO abogados(idAbogado, nombre, email, telefono, direccion)VALUES('$idAbogado', '$nombre', '$email', '$telefono', '$direccion')";
 
           if(!mysqli_query($con, $query)){
               die('Error: ' . mysqli_error($con));
@@ -194,10 +196,11 @@
                 <label for="telefono" class="form-label">Numero Telefonico</label>
                 <input type="number" class="for b2" name="telefono" id="exampleInputPassword1">
               </div>
-              <div class="mb-3">
-                <label for="direccion" class="form-label">Dirección</label>
-                <input type="text" class="for b3" name="direccion" id="exampleInputPassword1">
-              </div>
+                <div class="mb-3">
+                  <label for="direccion" class="form-label">Dirección</label>
+                  <input type="text" class="for b3" name="direccion" id="exampleInputPassword1">
+                </div>
+              
               <button type="submit" class="btn-brown" name="enviarAbogado">Enviar</button>
             </form>
           </div>

@@ -111,6 +111,9 @@
   <div class="containerr text-center">
     <div class="row content align-items-center">
       <div class="col col-5 clientes">
+        <a href="index.php">
+          <img style="position: absolute; top: 24px; left: 31px; width: 44px;" src="./icon/flecha.png" alt="">
+        </a>
         <h2 class="fs-2"><?php echo $fila['nombre']; ?></h2>
         <p class="parraf">Datos del cliente</p>
         <div style="margin-bottom: 8em">
@@ -183,8 +186,6 @@
             </div>
           </div>
         </div>
-
-
       </div>
       
       <div class="col background">
@@ -198,9 +199,7 @@
                 <label for="expediente" class="form-label">Expediente</label>
                 <input type="number" class="for" name="expediente" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $expediente; ?>">
               </div>
-           
             </div>
-
             <div class="forml1">
               <div class="first mb-3">
                 <label for="fechaini" class="form-label">Fecha de Inicio</label>
@@ -233,11 +232,10 @@
               </select>
               </div>
             </div>
-
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">Descripcion del caso</label>
-              <textarea class="form-control " name="descripcion" style="background: #fef0dc; margin-bottom: 2em;" id="exampleFormControlTextarea1" rows="3"></textarea>
-            </div>
+              <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Descripcion del caso</label>
+                <textarea class="form-control " name="descripcion" style="background: #fef0dc; margin-bottom: 2em;" id="exampleFormControlTextarea1" rows="3"></textarea>
+              </div>
             <button type="submit" class="btn-brown warning" name="enviarCaso">Enviar</button>
           </form>
         </div>
