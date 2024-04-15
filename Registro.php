@@ -2,14 +2,8 @@
     // Incluimos conexión
     include 'conexion.php';
 
-    // Obtener el ID del cliente de la URL
-    
-      //$idRegistro = $_GET['cedula'];
-
-    // Verificar si se ha enviado el formulario de edición
     if(isset($_POST['crear'])){
-        //$idRegistro = $_POST['cedula'];
-        // Obtener los datos del formulario
+
         $cedula = mysqli_real_escape_string($con, $_POST['cedula']);
         $nombre = mysqli_real_escape_string($con, $_POST['nombre']);
         $email = mysqli_real_escape_string($con, $_POST['email']);
@@ -23,7 +17,6 @@
         $color = mysqli_real_escape_string($con, $_POST['color']);
         $especie = mysqli_real_escape_string($con, $_POST['especie']);
 
-        // Validar si no están vacíos
         if(!isset($cedula) || $cedula == '' || !isset($nombre) || $nombre == '' || !isset($telefono) || $telefono == '' || !isset($email) || $email == '' || !isset($direccion) || $direccion == '' || !isset($nombreA) || $nombreA == '' || !isset($fechaini) || $fechaini == '' || !isset($raza) || $raza == '' || !isset($tamanio) || $tamanio == '' || !isset($color) || $color == '' || !isset($especie) || $especie == ''){
           $error = "Algunos campos están vacíos";
       }else{
@@ -40,53 +33,6 @@
           }
       }
     }
-
-    // Seleccionar datos del cliente
-    /*$query = "SELECT * FROM clientes WHERE cedula='$idRegistro'";
-    $result = mysqli_query($con, $query);
-    
-    // Verificar si se encontró el cliente
-    if(mysqli_num_rows($result) > 0){
-      
-        $fila = mysqli_fetch_assoc($result);
-    } else {
-        $error = "Cliente no encontrado";
-    }
-    */
-
-
-
-    /*if(isset($_POST['crear'])){
-      $nombreA = mysqli_real_escape_string($con, $_POST['nombreA']);
-      $fechaini = mysqli_real_escape_string($con, $_POST['fechaini']);
-      $raza = mysqli_real_escape_string($con, $_POST['raza']);
-      $tamanio = mysqli_real_escape_string($con, $_POST['tamanio']);
-      $color = mysqli_real_escape_string($con, $_POST['color']);
-      $especie = mysqli_real_escape_string($con, $_POST['especie']);
-
-       //Configurar tiempo zona horaria
-      date_default_timezone_set('America/Bogota');
-      $time = date('h:i:s a', time());
-
-      //Validar si no están vacíos
-      if(!isset($nombreA) || $nombreA == '' || !isset($fechaini) || $fechaini == '' || !isset($raza) || $raza == '' || !isset($tamanio) || $tamanio == '' || !isset($color) || $color == '' || !isset($especie) || $especie == ''){
-      $error = "Algunos campos están vacíos";
-      }else{
-          $query = "INSERT INTO animal(nombreA, raza, fechaini, tamanio, color, especie)VALUES('$nombreA', '$raza', '$fechaini', '$tamanio', '$color', '$especie')";
-
-          if(!mysqli_query($con, $query)){
-              die('Error: ' . mysqli_error($con));
-              $error = "Error, no se pudo crear el registro";
-          }else{
-              $mensaje = "Registro creado correctamente";
-                header('Location: index.php?mensaje='.urlencode($mensaje));
-                exit();
-        }
-      }
-    }
-    */
-
-
 
 ?>
 
