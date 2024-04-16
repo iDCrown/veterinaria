@@ -58,13 +58,13 @@
   <div class="containerr text-center">
   <form class="conteiner-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
 
-    <div class="row content align-items-center">      
+    <div style="height: 100vh;display: flex;" class="row content align-items-center">      
       <div class="col col-5 clientes">
         <a href="index.php">
           <img style="position: absolute; top: 24px; left: 31px; width: 44px;" src="./icon/flecha.png" alt="">
         </a>
-        <h2 class="h2_crear">Dueño</h2>
-        <p class="p_crear" >Ingrese la información del Dueño</p>
+        <h2  style="color:black" class="h2_crear">Dueño</h2>
+        <p  style="color:black" class="p_crear" >Ingrese la información del Dueño</p>
         <div style="margin-top: 22px">  
             <div class="forml1">
               <div class="first mb-3">
@@ -91,9 +91,9 @@
           </div>
         </div>
       <!-- Mascota -->
-      <div class="col background">
-        <h2 class="h2_crear">MASCOTA</h2>
-        <p class="p_crear" >Ingrese la información de la mascota</p>
+      <div style="background:#c0b6ff; color:white;" class="col background">
+        <h2  class="h2_crear">MASCOTA</h2>
+        <p  style="color:white" class="p_crear" >Ingrese la información de la mascota</p>
         <div style="margin-top: 22px">  
       
               <div class=" mb-3">
