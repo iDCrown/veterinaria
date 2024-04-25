@@ -42,7 +42,7 @@ body{
 .for {
     height: 45px;
     border: none;
-    background: #cae8f7;
+    background: #4a4a4a;
     border-radius: 8px;
     display: block;
     width: 100%;
@@ -116,4 +116,7 @@ body{
 }
 a{
     color: #f6bd00;
+}
+.myitem{
+    color: aqua;
 }
