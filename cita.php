@@ -42,6 +42,7 @@
                 <input type="text" class=" for" name="nombre" id="exampleInputPassword1">
             </div>
             </div>
+            <!--
             <div class="mb-3">
             <label for="email" class="form-label">Correo Electronico</label>
             <input type="email" class="for b1" name="email" id="exampleInputPassword1">
@@ -53,7 +54,8 @@
             <div class="mb-3">
             <label for="direccion" class="form-label">Dirección</label>
             <input type="text" class="for b3" name="direccion" id="exampleInputPassword1">
-            </div>
+            </div>-->
+
             <button type="submit" class="btn-brown" name="enviar">Enviar</button>
         </form>
         </div>
