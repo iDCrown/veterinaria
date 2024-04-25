@@ -23,7 +23,7 @@
           $queryCliente = "INSERT INTO cliente(cedula, nombre, email, telefono, direccion)VALUES('$cedula', '$nombre', '$email', '$telefono', '$direccion')";
           $queryAnimal = "INSERT INTO animal(nombreA, raza, fechaini, tamanio, color, especie)VALUES('$nombreA', '$raza', '$fechaini', '$tamanio', '$color', '$especie')";
 
-          if(!mysqli_query($con, $queryCliente) && mysqli_query($con, $queryAnimal)){
+          if(!mysqli_query($con, $queryCliente) || mysqli_query($con, $queryAnimal)){
               die('Error: ' . mysqli_error($con));
               $error = "Error, no se pudo crear el registro";
           }else{
@@ -32,6 +32,7 @@
               exit();
           }
       }
+      
     }
 
 ?>
