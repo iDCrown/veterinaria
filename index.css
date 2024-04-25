@@ -42,7 +42,11 @@ body{
 .for {
     height: 45px;
     border: none;
+<<<<<<< HEAD
     background: #ba0606;
+=======
+    background: #4a4a4a;
+>>>>>>> main
     border-radius: 8px;
     display: block;
     width: 100%;
