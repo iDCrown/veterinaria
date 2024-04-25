@@ -87,15 +87,16 @@
 <body>
   <ul class="nav nav-tabs" style=" padding: 1em; background: #fff4c1c2;">
     <li class="nav-item">
-      <a class="nav-link" style="border: none; color: #ffc108; font-variant-caps: all-petite-caps; font-weight: 900; letter-spacing: 1px;" aria-current="page"  href="#" onclick="mostrarTabla('clientes')">Clientes</a>
+      <a class="nav-link" style="border: none; color: #ffc108; font-variant-caps: all-petite-caps; font-weight: 900; letter-spacing: 1px;" aria-current="page"  href="Registro.php" onclick="mostrarTabla('clientes')">Registrar Paciente</a>
     </li>
-
-    <!-- <li class="nav-item">
-      <a class="nav-link"style="border: none; color: #ffc108; font-variant-caps: all-petite-caps; font-weight: 900; letter-spacing: 1px;" href="#" onclick="mostrarTabla('casos')">Historial de casos</a>
-    </li> -->
-
     <li class="nav-item">
-      <a class="nav-link"style="border: none; color: #ffc108; font-variant-caps: all-petite-caps; font-weight: 900; letter-spacing: 1px;" href="#" onclick="mostrarTabla('abogado')">Crear Abogado</a>
+      <a class="nav-link"style="border: none; color: #ffc108; font-variant-caps: all-petite-caps; font-weight: 900; letter-spacing: 1px;" href="historialClinico.php">Historial de cliente</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"style="border: none; color: #ffc108; font-variant-caps: all-petite-caps; font-weight: 900; letter-spacing: 1px;" href="#" onclick="mostrarTabla('casos')">Factura</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"style="border: none; color: #ffc108; font-variant-caps: all-petite-caps; font-weight: 900; letter-spacing: 1px;" href="#" onclick="mostrarTabla('casos')">cita</a>
     </li>
   </ul>
   <div class="conteiner">
