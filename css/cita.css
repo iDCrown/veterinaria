@@ -4,7 +4,7 @@
     flex-direction: column;
     width: 40%;
     padding: 5em 4em 4em;
-    box-shadow: 0px 0px 14px 4px rgb(218 146 2 / 28%);
+    box-shadow: 0px 0px 14px 4px rgb(114 114 114 / 28%);
 }
 .forml1{
     display: flex;
@@ -17,7 +17,7 @@
 .for {
     height: 45px;
     border: none;
-    background: #f7e4ca;
+    background: #ecffc3;
     border-radius: 8px;
     display: block;
     width: 100%;
@@ -28,13 +28,13 @@
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 .b1{
-    background: hsl(35.25deg 71.43% 78.04%);
+    background: rgb(210, 245, 134);
 }
 .b2{
-    background:#f5b24f;
+    background: #d3f981;
 }
 .b3{
-    background: #e79e28;
+    background:  rgb(193, 240, 91);
 }
 .conteiner-form{
     display: flex;
@@ -42,17 +42,17 @@
 }
 .btn-brown{
     align-self: center;
-    border: 3px solid #965e00;
+    border: 3px solid #e4ffa8;
     height: 2.9em;
     width: 9.5em;
     background: transparent;
-    color: #965e01;
+    color: #a5e10d;
     border-radius: 3em;
     margin-top: 10px;
 }
 .btn-brown:hover {
-    background: #965e00;
-    color: white;
+    background: #a5e10d;
+    color: #e4ffa8;
     transition-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
     transition-duration: 0.5s;
 }
@@ -60,24 +60,26 @@
     outline: none;
 }
 .for:focus-visible{
-    border: 3px solid #965e00;
+    border: 3px solid #a5e10d;
 }
 .h2_crear{
-    color: #e0a347;
-    font-family: monospace;
+    font-family: serif;
+    font-variant-caps: all-petite-caps;
+    align-self: center;
 }
 .p_crear{
     font-size: 15px;
-    font-family: monospace;
-    color: #925f12;
+    font-family: serif;
+    align-self: center;
+   
 }
 .form-label{
     font-size: smaller;
-    color: #925f12;
+    color: #0f0f0f;
 }
 
 .conten{
-    height: 100vh;
+    height: 91vh;
     display: flex; 
     justify-content: center;
     align-items: center;
