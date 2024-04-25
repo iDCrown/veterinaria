@@ -38,7 +38,6 @@
                 <button type="submit" class="btn btn-warning w-100" name="borrar">Borrar</button>
               </form>
             </tr> 
-            <?php endwhile; ?>
           </tbody>
         </table>
       </div>

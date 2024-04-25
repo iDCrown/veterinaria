@@ -12,7 +12,7 @@
     <h1>Reserva de cita</h1>
     <?php
     include 'conexion.php';
-    
+    if(isset($_POST['Reservar cita'])){
         // Obtener datos del formulario
         $nombre = $_POST["nombre_cliente"];
         $telefono = $_POST["telefono_cliente"];
@@ -43,7 +43,7 @@
         } else {
             echo "Error al agregar el cliente: " . $conn->error;
         }
-
+    }
         
     ?>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
