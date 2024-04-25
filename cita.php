@@ -27,7 +27,7 @@
         if ($conn->query($sql_insert_cliente) === TRUE) {
             $cedula = $conn->insert_id;
 
-            $sql_insert_mascota = "INSERT INTO mascota (nombre, edad, raza, cedula) VALUES ('$nomMasco', '$Fechaini', '$raza', '$cedula')";
+            $sql_insert_mascota = "INSERT INTO mascota(nombre, edad, raza, cedula) VALUES ('$nomMasco', '$Fechaini', '$raza', '$cedula')";
             if ($conn->query($sql_insert_mascota) === TRUE) {
                 $idMascota = $conn->insert_id;
 
