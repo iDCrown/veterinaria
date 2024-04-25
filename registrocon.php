@@ -32,7 +32,7 @@
                 $error = "Error, no se pudo crear el registro";
             }else{
                 $mensaje = "Registro creado correctamente";
-                header('Location: index.php?mensaje='.urlecode($mensaje));
+                header('Location: index.php?mensaje='.urldecode($mensaje));
                 exit();
             }
         }
@@ -40,4 +40,3 @@
 
 
 ?>
-

@@ -2,8 +2,8 @@
 .conteiner{
     display: flex;
     flex-direction: column;
-    width: 40%;
-    padding: 5em 4em 4em;
+    width: 53%;
+    padding: 2em 4em;
     box-shadow: 0px 0px 14px 4px rgb(114 114 114 / 28%);
 }
 .forml1{
@@ -79,8 +79,9 @@
 }
 
 .conten{
-    height: 91vh;
+    height: 88vh;
     display: flex; 
     justify-content: center;
     align-items: center;
+    padding: 2em 0;
 }
