@@ -11,7 +11,7 @@
 <body>
     <h1>Reserva de cita</h1>
     <?php
-     include 'conexion.php';
+    include 'conexion.php';
     
         // Obtener datos del formulario
         $nombre = $_POST["nombre_cliente"];
