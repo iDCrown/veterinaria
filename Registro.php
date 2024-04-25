@@ -20,6 +20,9 @@
   </head>
 <body>
   <ul class="nav nav-tabs" style=" padding: 1em; background: #fcfff5;">
+  <li class="nav-item">
+      <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page"  href="index.php" onclick="mostrarTabla('clientes')">Inicio</a>
+    </li>
     <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page"  href="Registro.php" onclick="mostrarTabla('clientes')">Registrar Paciente</a>
     </li>
@@ -38,9 +41,6 @@
 
     <div style="height: 100vh;display: flex;" class="row content align-items-center">      
       <div class="col col-5 clientes">
-        <a href="index.php">
-          <img style="position: absolute; top: 24px; left: 31px; width: 44px;" src="./icon/flecha.png" alt="">
-        </a>
         <h2  style="color:black" class="h2_crear">Dueño</h2>
         <p  style="color:black" class="p_crear" >Ingrese la información del Dueño</p>
         <div style="margin-top: 22px">  
