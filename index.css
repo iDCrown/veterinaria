@@ -42,7 +42,11 @@ body{
 .for {
     height: 45px;
     border: none;
+<<<<<<< HEAD
     background: #4a4a4a;
+=======
+    background: #ba0606;
+>>>>>>> c558228f102b7ef1b56ace586bc26bcf023ae68f
     border-radius: 8px;
     display: block;
     width: 100%;
