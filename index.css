@@ -42,11 +42,11 @@ body{
 .for {
     height: 45px;
     border: none;
-<<<<<<< HEAD
+<<<<<<<<< Temporary merge branch 1
     background: #ba0606;
-=======
+=========
     background: #4a4a4a;
->>>>>>> main
+>>>>>>>>> Temporary merge branch 2
     border-radius: 8px;
     display: block;
     width: 100%;

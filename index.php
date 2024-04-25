@@ -96,10 +96,7 @@
       <a class="nav-link myitem" href="#" onclick="mostrarTabla('casos')">Factura</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link myitem" href="#" onclick="mostrarTabla('casos')">cita</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link myitem" href="#" onclick="mostrarTabla('casos')">hola</a>
+      <a class="nav-link"style="border: none; color: #ffc108; font-variant-caps: all-petite-caps; font-weight: 900; letter-spacing: 1px;" href="cita.php" onclick="mostrarTabla('casos')">cita</a>
     </li>
   </ul>
   <div class="container">
