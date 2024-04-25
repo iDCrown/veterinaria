@@ -103,12 +103,6 @@
     <div class="content">
       <!-- Tabla de clientes -->
       <div id="clientes" style="display: block;">
-        <!-- Boton Crear Cliente -->
-        <div class="boton">
-          <a href="Registro.php" class=""> 
-            <button type="button" class=" btn btn-outline-warning">Registrar Paciente</button>
-          </a>
-        </div>
 
     </div>  
   </div>
