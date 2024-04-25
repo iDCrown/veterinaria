@@ -42,11 +42,60 @@
                 <input type="text" class=" for" name="nombre" id="exampleInputPassword1">
             </div>
             </div>
-            <!--
+            
             <div class="mb-3">
-            <label for="email" class="form-label">Correo Electronico</label>
+            <label for="email" class="form-label">Fecha de la Cita</label>
             <input type="email" class="for b1" name="email" id="exampleInputPassword1">
             </div>
+            
+            <label for="email" class="form-label">Servicios</label>
+
+            
+
+            <!--CHECKS PARA ESCOGER LOS SERVICIOS-->
+
+            <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              <b>Consulta general - 50.000 COP</b>
+            </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+              <label class="form-check-label" for="flexCheckChecked">
+                <b>administración de medicamentos - 100.000 COP</b>
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+              <label class="form-check-label" for="flexCheckChecked">
+                <b>Vacunas - 40.000 COP</b>
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+              <label class="form-check-label" for="flexCheckChecked">
+                <b>Realizacion de pruebas básicas(Analisis de sangre, analisis de orina, detección de parasitos etc.) - 60.000 COP</b>
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+              <label class="form-check-label" for="flexCheckChecked">
+                <b>Realizacion de pruebas especializadas(Resonancia magnética, electrocardiografía, endoscopia) - 120.000 COP</b>
+              </label>
+            </div>
+
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+              <label class="form-check-label" for="flexCheckChecked">
+                <b>Peluquería - 30.000 COP</b>
+              </label>
+            </div>
+            <!--  
             <div class="mb-3">
             <label for="telefono" class="form-label">Numero Telefonico</label>
             <input type="number" class="for b2" name="telefono" id="exampleInputPassword1">
