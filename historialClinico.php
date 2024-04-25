@@ -8,14 +8,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-<!--HEAD-->
   <!-- nav -->
   <ul class="nav nav-tabs" style=" padding: 1em; background: #fcfff5;">
-  <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page"  href="index.php" onclick="mostrarTabla('clientes')">Inicio</a>
-    </li>
+    </li>    
     <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page"  href="Registro.php" onclick="mostrarTabla('clientes')">Registrar Paciente</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="cita.php" onclick="mostrarTabla('casos')">cita</a>
     </li>
     <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="historialClinico.php">Historial de cliente</a>
@@ -23,16 +25,13 @@
     <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="#" onclick="mostrarTabla('casos')">Factura</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="cita.php" onclick="mostrarTabla('casos')">cita</a>
-    </li>
-  </ul>
+  </ul> 
   <!-- historial clinico -->
-<!--Ramita-->
   <div class="conteiner">
     <h1 class="title">Historial Clinico</h1>
     <div class="content">
       <form class="consultar" action="">
+      <p  style="color:black" class="p_crear">Ingrese el ID del cliente</p>
         <input class="input" type="text" name="cedula">
         <button type="submit" class="button" name="consultar">buscar</button>
       </form>

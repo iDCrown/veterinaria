@@ -17,11 +17,14 @@
   </head>
 <body>
   <ul class="nav nav-tabs" style=" padding: 1em; background: #fcfff5;">
-  <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page"  href="index.php" onclick="mostrarTabla('clientes')">Inicio</a>
-    </li>
+    </li>    
     <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page"  href="Registro.php" onclick="mostrarTabla('clientes')">Registrar Paciente</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="cita.php" onclick="mostrarTabla('casos')">cita</a>
     </li>
     <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="historialClinico.php">Historial de cliente</a>
@@ -29,16 +32,14 @@
     <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="#" onclick="mostrarTabla('casos')">Factura</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="cita.php" onclick="mostrarTabla('casos')">cita</a>
-    </li>
-  </ul>
+  </ul> 
   <div class="containerr text-center">
+
   <form class="conteiner-form" method="POST" action="registrocon.php">
 
-    <div style="height: 100vh;display: flex;" class="row content align-items-center">      
+    <div style="height: 85vh;display: flex;" class="row content align-items-center">      
       <div class="col col-5 clientes">
-        <h2  style="color:black" class="h2_crear">Dueño</h2>
+        <h1 style="color:black" class="h2_crear">Dueño</h1>
         <p  style="color:black" class="p_crear" >Ingrese la información del Dueño</p>
         <div style="margin-top: 22px">  
             <div class="forml1">
@@ -66,39 +67,39 @@
           </div>
         </div>
       <!-- Mascota -->
-      <div style="background:#c0b6ff; color:white;" class="col background">
-        <h2  class="h2_crear">MASCOTA</h2>
-        <p  style="color:white" class="p_crear" >Ingrese la información de la mascota</p>
+      <div style="background:#ecfec3;" class="col background">
+        <h1 class="h2_crear">MASCOTA</h1>
+        <p  class="p_crear" >Ingrese la información de la mascota</p>
         <div style="margin-top: 22px">  
       
               <div class=" mb-3">
                 <label for="nombreA" class="form-label">Nombre </label>
-                <input type="text" class=" for" name="nombreA" id="exampleInputPassword1">
+                <input type="text" class=" for white" name="nombreA" id="exampleInputPassword1">
               </div>
   
             <div class="forml1">
               <div class="first mb-3">
                 <label for="fechaini" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class=" for"  name="fechaini">
+                <input type="date" class=" for white"  name="fechaini">
               </div>
               <div class="first mb-3">
                 <label for="raza" class="form-label">Raza</label>
-                <input type="text" class=" for" name="raza" id="exampleInputPassword1">
+                <input type="text" class=" for white" name="raza" id="exampleInputPassword1">
               </div>
             </div>
             <div class="forml1">
               <div class="first mb-3">
                 <label for="tamanio" class="form-label">Tamaño</label>
-                <input type="number" class="for b2" name="tamanio" id="exampleInputPassword1">
+                <input type="number" class="for white" name="tamanio" id="exampleInputPassword1">
               </div>
               <div class="first mb-3">
                 <label for="color" class="form-label">Color</label>
-                <input type="text" class=" for" name="color" id="exampleInputPassword1">
+                <input type="text" class=" for white" name="color" id="exampleInputPassword1">
               </div>
             </div>  
               <div class="first mb-3">
                 <label for="especie" class="form-label">Especie</label>
-                <input type="text" class=" for" name="especie" id="exampleInputPassword1">
+                <input type="text" class=" for white" name="especie" id="exampleInputPassword1">
               </div>
             </div>
             <button type="submit" class="btn-brown warning" name="crear">Crear</button>

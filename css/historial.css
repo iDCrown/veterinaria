@@ -41,10 +41,15 @@ body{
   font-size: 17px;
 }
 .title{
-  margin-bottom: 3em;
+  margin-bottom: 2em;
   display: block;
   font-family: serif;
   font-variant-caps: all-petite-caps;
+}
+.p_crear{
+  font-size: 15px;
+  font-family: serif;
+
 }
 .input{
   border-radius: 8px;
