@@ -31,10 +31,10 @@
       <h1 class="h2_crear">Programa tu Cita</h1>
       <p class="p_crear" >Ingrese la información de la cita</p>
       <div style="margin-top: 22px">  
-        <form class="conteiner-form" method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <form class="conteiner-form" method="POST" action="citacon.php">
           <div class="mb-3">
             <label for="email" class="form-label">fecha de cita</label>
-            <input type="email" class="for b1" name="email" id="exampleInputPassword1">
+            <input type="date" class="for b1" name="fecha" id="exampleInputPassword1">
           </div>
           <div class="forml1">
             <div class="first mb-3">
@@ -42,12 +42,12 @@
               <input type="number" class="for" name="cedula" id="exampleInputEmail1" aria-describedby="emailHelp">
             </div>
             <div class="first mb-3">
-              <label for="nombre" class="form-label">Nombre Completo</label>
-              <input type="text" class=" for" name="nombre" id="exampleInputPassword1">
+              <label for="nombre" class="form-label">Mascota</label>
+              <input type="text" class=" for" name="nombreA" id="exampleInputPassword1">
             </div>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" name="consulta" value="" id="flexCheckDefault">
             <label class=" form-label" for="flexCheckDefault">
               Consulta general - 50.000 COP
             </label>
