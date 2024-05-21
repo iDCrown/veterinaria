@@ -2,6 +2,7 @@
 //Incluimos la conexión que esta en el archivo "conexion.php de la base de datos"
 include 'conexion.php';
 /*Usando el método POST se recuperan los datos que se registran en el formulario en el archi "cita.php" para posteriormente utilizarlos para la inserción de datos y obtención de datos pertinentes */
+
 function obtener_id_servicio($nom_servicio){
     global $con;
     $query = "SELECT idServicio FROM servicios WHERE Nombre_Servicio = ?";
