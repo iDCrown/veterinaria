@@ -47,42 +47,42 @@
             </div>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" name="consulta" value="" id="flexCheckDefault">
+            <input class="form-check-input" type="checkbox" name="servicios[]" value="consulta" id="flexCheckDefault">
             <label class=" form-label" for="flexCheckDefault">
               Consulta general - 50.000 COP
             </label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <input class="form-check-input" type="checkbox" name="servicios[]" value="medicamentos" id="flexCheckChecked">
             <label class=" form-label" for="flexCheckChecked">
               administración de medicamentos - 100.000 COP
             </label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <input class="form-check-input" type="checkbox" name="servicios[]" value="vacunas" id="flexCheckChecked">
             <label class="form-label" for="flexCheckChecked">
               Vacunas - 40.000 COP
             </label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <input class="form-check-input" type="checkbox" name="servicios[]" value="basicas" id="flexCheckChecked">
             <label class="form-label" for="flexCheckChecked">
               Realizacion de pruebas básicas(Analisis de sangre, analisis de orina, detección de parasitos etc.) - 60.000 COP
             </label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <input class="form-check-input" type="checkbox" name="servicios[]" value="especializadas" id="flexCheckChecked">
             <label class="form-label" for="flexCheckChecked">
               Realizacion de pruebas especializadas(Resonancia magnética, electrocardiografía, endoscopia) - 120.000 COP
             </label>
           </div>
 
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+            <input class="form-check-input" type="checkbox" name="servicios[]" value="peluqueria" id="flexCheckChecked">
             <label class=" form-label" for="flexCheckChecked">
               Peluquería - 30.000 COP
             </label>
