@@ -19,16 +19,13 @@
 
 
 
+
+
         if(!isset($cedula) || $cedula == '' || !isset($nombre) || $nombre == '' || !isset($telefono) || $telefono == '' || !isset($email) || $email == '' || !isset($direccion) || $direccion == '' || !isset($nombreA) || $nombreA == '' || !isset($fechaini) || $fechaini == '' || !isset($raza) || $raza == '' || !isset($tamanio) || $tamanio == '' || !isset($color) || $color == '' || !isset($especie) || $especie == ''){
             $error = "Algunos campos están vacíos";
-        } else {
-            // Insertar el cliente
-            $queryAnimal = "INSERT INTO mascota(nombreA, raza, fechaini, tamanio, color, especie)VALUES('$nombreA', '$raza', '$fechaini', '$tamanio', '$color', '$especie')";
+        }else{
             $queryCliente = "INSERT INTO cliente(cedula, nombre, email, telefono, direccion)VALUES('$cedula', '$nombre', '$email', '$telefono', '$direccion')";
-          $error = "Algunos campos están vacíos";
-      }else{
-          $queryCliente = "INSERT INTO cliente(cedula, nombre, email, telefono, direccion)VALUES('$cedula', '$nombre', '$email', '$telefono', '$direccion')";
-          $queryAnimal = "INSERT INTO mascota(nombreA, raza, fechaini, tamanio, color, especie, cedula)VALUES('$nombreA', '$raza', '$fechaini', '$tamanio', '$color', '$especie','$cedula')";
+            $queryAnimal = "INSERT INTO mascota(nombreA, raza, fechaini, tamanio, color, especie, cedula)VALUES('$nombreA', '$raza', '$fechaini', '$tamanio', '$color', '$especie','$cedula')";
 
             if(!mysqli_query($con, $queryCliente) || !mysqli_query($con, $queryAnimal)){
                 die('Error: ' . mysqli_error($con));
@@ -39,17 +36,7 @@
                 exit();
             }
         }
-          if(!mysqli_query($con, $queryCliente) || !mysqli_query($con, $queryAnimal)){
-              die('Error: ' . mysqli_error($con));
-              $error = "Error, no se pudo crear el registro";
-          }else{
-              $mensaje = "Registro creado correctamente";
-              header('Location: index.php?mensaje='.urlecode($mensaje));
-              exit();
-          }
-      }
-    
     }
 
-?>
 
+?>
