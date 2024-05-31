@@ -1,3 +1,4 @@
+<?php include 'historialClinicoCon.php'?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +31,7 @@
   <div class="conteiner">
     <h1 class="title">Historial Clinico</h1>
     <div class="content">
-      <form class="consultar" action="">
+      <form class="consultar" action="" method="GET">
       <p  style="color:black" class="p_crear">Ingrese el ID del cliente</p>
         <input class="input" type="text" name="cedula">
         <button type="submit" class="button" name="consultar">buscar</button>
@@ -40,21 +41,29 @@
         <table class="table table-hover ">
           <thead class="table table-bordered b3">
             <tr>
-              <th class="th_color" scope="col">Cedula</th>
-              <th class="th_color" scope="col">Nombre</th>
-              <th class="th_color" scope="col">Correo</th>
-              <th class="th_color" scope="col">Telefono</th>
-              <th class="th_color" scope="col">Direccion</th>
+              <th class="th_color" scope="col">numero_cita</th>
+              <th class="th_color" scope="col">nombre_cliente</th>
+              <th class="th_color" scope="col">nombre_mascota</th>
+              <th class="th_color" scope="col">servicios_tomados</th>
+              <th class="th_color" scope="col">Fecha_Visita</th>
             </tr>
           </thead>
           <tbody>
+          <?php if ($result): ?>
+            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
             <tr class="tr-row" style="font-size: smaller">
-              <td scope="row"></td>
-              <td scope="row"></td>
-              <td scope="row"></td>
-              <td scope="row"></td>
-              <td scope="row"></td>
-            </tr> 
+              <td scope="row"><?php echo $row['numero_cita']; ?></td>
+              <td scope="row"><?php echo $row['nombre_cliente']; ?></td>
+              <td scope="row"><?php echo $row['nombre_mascota']; ?></td>
+              <td scope="row"><?php echo $row['servicios_tomados']; ?></td>
+              <td scope="row"><?php echo $row['Fecha_Visita']; ?></td>
+            </tr>
+            <?php endwhile; ?>
+          <?php else: ?>
+            <tr>
+              <td colspan="5">No se encontraron registros.</td>
+            </tr>
+          <?php endif; ?>
           </tbody>
         </table>
       </div>

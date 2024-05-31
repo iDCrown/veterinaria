@@ -50,7 +50,7 @@ if(isset($_POST['enviar'])){
         $error = "Algunos campos están vacíos";
     } else {
         // Obtener el idMascota
-        $query_id_mascota = "SELECT idMascota FROM mascota WHERE nombreA = ? AND cedula = ?";
+        $query_id_mascota = "SELECT idMascota FROM mascota WHERE nombreA = ? AND cedula = ?"; 
         $stmt = $con->prepare($query_id_mascota);
         $stmt->bind_param("si", $nombreA, $cedula);
         $stmt->execute();
