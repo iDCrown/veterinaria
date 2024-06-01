@@ -18,9 +18,6 @@
         $especie = mysqli_real_escape_string($con, $_POST['especie']);
 
 
-
-
-
         if(!isset($cedula) || $cedula == '' || !isset($nombre) || $nombre == '' || !isset($telefono) || $telefono == '' || !isset($email) || $email == '' || !isset($direccion) || $direccion == '' || !isset($nombreA) || $nombreA == '' || !isset($fechaini) || $fechaini == '' || !isset($raza) || $raza == '' || !isset($tamanio) || $tamanio == '' || !isset($color) || $color == '' || !isset($especie) || $especie == ''){
             $error = "Algunos campos están vacíos";
         }else{

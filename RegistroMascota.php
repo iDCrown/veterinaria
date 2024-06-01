@@ -42,46 +42,24 @@
         </li>
     </ul> 
 
-    <div class="containerr text-center">
-        <form class="conteiner-form" method="POST" action="registrocon.php">
-            <div style="height: 85vh;display: flex;" class="row content align-items-center"> 
-                <div class="col col-5 clientes">
-                    <h1 style="color:black" class="h2_crear">Dueño</h1>
-                        <p  style="color:black" class="p_crear" >Ingrese la información del Dueño</p>
-                    <div style="margin-top: 22px">
-                        <div class="forml1">
-                            <div class="first mb-3">
-                                <label for="cedula" class="form-label">Cedula</label>
-                                <input type="number" class="for" name="cedula" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            </div>
-                            <div class="first mb-3">
-                                <label for="nombre" class="form-label">Nombre Completo</label>
-                                <input type="text" class=" for" name="nombre" id="exampleInputPassword1">
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electronico</label>
-                            <input type="email" class="for b1" name="email" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="telefono" class="form-label">Numero Telefonico</label>
-                            <input type="number" class="for b2" name="telefono" id="exampleInputPassword1">
-                        </div>
-                        <div class="mb-3">
-                            <label for="direccion" class="form-label">Dirección</label>
-                            <input type="text" class="for b3" name="direccion" id="exampleInputPassword1">
-                        </div>
-                    </div>
-                </div>
+    <div class="containerr text-center" style="display: flex; justify-content:center;">
+        <form class="conteiner-form" method="POST" action="RegistroMascotaCon.php" style="width:60%; height: 80.5vh;">
+            <div style="display: flex;" class="row content align-items-center"> 
         <!-- Mascota -->
-                <div style="background:#ecfec3;" class="col background">
+                <div style="background:#ecfec3; padding:3em; " class="background">
                     <h1 class="h2_crear">MASCOTA</h1>
                     <p  class="p_crear" >Ingrese la información de la mascota</p>
-                <div style="margin-top: 22px">  
-                    <div class=" mb-3">
-                    <label for="nombreA" class="form-label">Nombre </label>
-                    <input type="text" class=" for white" name="nombreA" id="exampleInputPassword1">
+                <div style="margin-top: 22px"> 
+                <div class="forml1"> 
+                    <div class="first mb-3">
+                        <label for="especie" class="form-label">Cedula del propietario</label>
+                        <input type="number" class=" for white" name="cedula" id="exampleInputPassword1">
                     </div>
+                    <div class=" first mb-3">
+                        <label for="nombreA" class="form-label">Nombre </label>
+                        <input type="text" class=" for white" name="nombreA" id="exampleInputPassword1">
+                    </div>
+                </div>    
             <div class="forml1">
                 <div class="first mb-3">
                     <label for="fechaini" class="form-label">Fecha de Nacimiento</label>
@@ -106,7 +84,7 @@
                     <label for="especie" class="form-label">Especie</label>
                     <input type="text" class=" for white" name="especie" id="exampleInputPassword1">
                 </div>
-                </div>
+            </div>
             <button type="submit" class="btn-brown warning" name="crear">Crear</button>
                 </div>
             </div>
