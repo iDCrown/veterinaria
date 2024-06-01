@@ -1,21 +1,31 @@
 <?php
 // Incluimos la conexión que está en el archivo "conexion.php" de la base de datos
 include 'conexion.php';
-
-/* Usando el método POST se recuperan los datos que se registran en el formulario en el archivo "cita.php" para posteriormente utilizarlos para la inserción de datos y obtención de datos pertinentes */
-
+/*La función "obtener_id_servicio", como lo indica su nombre, sirve para hallar el id del servicio o los servicios que hay en cada cita que el cliente realiza.
+Se indica un parametro "$nom_servicio" el cual es el nombre del servicio cuyo id se requiere conseguir. También se incluye "global $con" para hacer conexión con la variable $con la cual esta afuera de la función para que no haya problemas de conectividad.  */
 function obtener_id_servicio($nom_servicio){
+    //Incluyendo la variable $con
     global $con;
+    //Definiendo     la consulta. el idServicio tiene que coincidir con el nombre_Servicio.
     $query = "SELECT idServicio FROM servicios WHERE Nombre_Servicio = ?";
+    //Preparando la consulta para su ejecución
     $stmt = $con->prepare($query);
+    //vinculamos el parametro "$nom_servicio" aclarando que "s" es una cadena de texto. 
     $stmt->bind_param("s", $nom_servicio);
+    //Ejecutamos finalmente la consulta con el parametro vinculado.
     $stmt->execute();
+    //Obteniendo el resultado de la ejecución de la consulta. Mediante "get_result" devuelve un objeto "mysqli_result"
     $result = $stmt->get_result();
+
+    //Verificando los resultados si la consulta devuelve alguna fila cuando "num_rows" es mayor a 0
     if($result->num_rows > 0){
+        //De haber alguna fila se obtiene como un array asociativo usando "fetch_assoc"
         $row = $result->fetch_assoc();
+        //Retorna el valor del campo "idServicio"
         return $row["idServicio"];
     }
-    return null; // Agregar un retorno nulo en caso de que no se encuentre el servicio
+    // Agregar un retorno nulo en caso de que no se encuentre el servicio
+    return null; 
 }
 
 function obtener_servicio($servicio){
@@ -40,6 +50,7 @@ function obtener_servicio($servicio){
 // Configurar tiempo zona horaria
 date_default_timezone_set('America/Bogota');
 
+/* Usando el método POST se recuperan los datos que se registran en el formulario en el archivo "cita.php" para posteriormente utilizarlos para la inserción de datos y obtención de datos pertinentes */
 if(isset($_POST['enviar'])){
     $fecha = $_POST['fecha'];
     $cedula = $_POST['cedula'];
