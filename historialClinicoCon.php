@@ -35,4 +35,4 @@ if (isset($_GET['cedula'])) {
     // Procesar los resultados (ejemplo)
 
 }
-?>
+

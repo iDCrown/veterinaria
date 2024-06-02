@@ -29,6 +29,6 @@ if (isset($_GET['cedula'])) {
   $result = $stmt->get_result();
 
 }
-?>
+
 
 
