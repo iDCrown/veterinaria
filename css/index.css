@@ -1,0 +1,19 @@
+body{
+    font-family: monospace;
+}
+.conteiner{
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5em;
+}
+.content {
+    width: 45%;
+}
+.title{
+    margin-bottom: 2em;
+    display: block;
+    font-family: serif;
+    font-variant-caps: all-petite-caps;
+  }
