@@ -1,3 +1,4 @@
+<?php include "facturacon.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +19,18 @@
     <li class="nav-item">
       <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page"  href="index.php">Inicio</a>
     </li>    
-    <li class="nav-item">
-      <a class="nav-link myitem" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page"  href="Registro.php">Registrar Paciente</a>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" aria-current="page" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Registrar Paciente
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+          <a class="dropdown-item" style="border: none;color: #aee570;font-weight: 900;font-size: 20px;font-family: serif;font-variant-caps: all-petite-caps;" href="Registro.php">Nueva Mascota</a>
+        </li>
+        <li>
+          <a class="dropdown-item" style="border: none;color: #aee570;font-weight: 900;font-size: 20px;font-family: serif;font-variant-caps: all-petite-caps;" href="RegistroMascota.php">Agregar otra Mascota</a>
+        </li>
+      </ul>
     </li>
     <li class="nav-item">
       <a class="nav-link" style="border: none;color: #aee570;font-weight: 900;font-size: 23px;font-family: serif;font-variant-caps: all-petite-caps;" href="cita.php">cita</a>
@@ -35,7 +46,7 @@
   <div class="conteiner">
     <h1 class="title">Factura</h1>
     <div class="content">
-      <form class="consultar" action="">
+      <form class="consultar" action="" method="GET">
       <p  style="color:black" class="p_crear">Ingrese el ID del cliente</p>
         <input class="input" type="text" name="cedula">
         <button type="submit" class="button" name="consultar">buscar</button>
@@ -53,19 +64,27 @@
             </tr>
           </thead>
           <tbody>
+          <?php if ($result): ?>
+            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
             <tr class="tr-row" style="font-size: smaller">
-              <td scope="row"></td>
-              <td scope="row"></td>
-              <td scope="row"></td>
-              <td scope="row"></td>
-              <td scope="row">
-                <form method="POST" action="">
-                  <input type="hidden" name="cedula" value="">
-                  <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="button">Pagar</button>
-                  <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="button">ver</button>
-                </form>
-              </td>
-            </tr> 
+              <td scope="row"><?php echo $row['Factura_Nº']; ?></td>
+              <td scope="row"><?php echo $row['Fecha_Emision']; ?></td>
+              <td scope="row"><?php echo $row['estado']; ?></td>
+              <td scope="row"><?php echo $row['nombreA']; ?></td>
+              <td>
+              <form method="POST" action="">
+                <input type="hidden" name="cedula" value="">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="button">Pagar</button>
+                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="button">ver</button>
+              </form>
+            </td>
+            </tr>
+            <?php endwhile; ?>
+            <?php else: ?>
+              <tr>
+                <td colspan="5">No se encontraron facturas.</td>
+              </tr>
+            <?php endif; ?>
           </tbody>
         </table>
       </div>

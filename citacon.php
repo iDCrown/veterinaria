@@ -1,30 +1,18 @@
 <?php
 // Incluimos la conexión que está en el archivo "conexion.php" de la base de datos
 include 'conexion.php';
-/*La función "obtener_id_servicio", como lo indica su nombre, sirve para hallar el id del servicio o los servicios que hay en cada cita que el cliente realiza.
-Se indica un parametro "$nom_servicio" el cual es el nombre del servicio cuyo id se requiere conseguir. También se incluye "global $con" para hacer conexión con la variable $con la cual esta afuera de la función para que no haya problemas de conectividad.  */
-function obtener_id_servicio($nom_servicio){
-    //Incluyendo la variable $con
-    global $con;
-    //Definiendo     la consulta. el idServicio tiene que coincidir con el nombre_Servicio.
-    $query = "SELECT idServicio FROM servicios WHERE Nombre_Servicio = ?";
-    //Preparando la consulta para su ejecución
-    $stmt = $con->prepare($query);
-    //vinculamos el parametro "$nom_servicio" aclarando que "s" es una cadena de texto. 
-    $stmt->bind_param("s", $nom_servicio);
-    //Ejecutamos finalmente la consulta con el parametro vinculado.
-    $stmt->execute();
-    //Obteniendo el resultado de la ejecución de la consulta. Mediante "get_result" devuelve un objeto "mysqli_result"
-    $result = $stmt->get_result();
 
-    //Verificando los resultados si la consulta devuelve alguna fila cuando "num_rows" es mayor a 0
+function obtener_id_servicio($nom_servicio){
+    global $con;
+    $query = "SELECT idServicio FROM servicios WHERE Nombre_Servicio = ?";
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("s", $nom_servicio);
+    $stmt->execute();
+    $result = $stmt->get_result();
     if($result->num_rows > 0){
-        //De haber alguna fila se obtiene como un array asociativo usando "fetch_assoc"
         $row = $result->fetch_assoc();
-        //Retorna el valor del campo "idServicio"
         return $row["idServicio"];
     }
-    // Agregar un retorno nulo en caso de que no se encuentre el servicio
     return null; 
 }
 
@@ -50,7 +38,6 @@ function obtener_servicio($servicio){
 // Configurar tiempo zona horaria
 date_default_timezone_set('America/Bogota');
 
-/* Usando el método POST se recuperan los datos que se registran en el formulario en el archivo "cita.php" para posteriormente utilizarlos para la inserción de datos y obtención de datos pertinentes */
 if(isset($_POST['enviar'])){
     $fecha = $_POST['fecha'];
     $cedula = $_POST['cedula'];
@@ -59,6 +46,8 @@ if(isset($_POST['enviar'])){
     // Validar si no están vacíos
     if(empty($fecha) || empty($cedula) || empty($nombreA)){
         $error = "Algunos campos están vacíos";
+        echo $error;
+        exit();
     } else {
         // Obtener el idMascota
         $query_id_mascota = "SELECT idMascota FROM mascota WHERE nombreA = ? AND cedula = ?"; 
@@ -67,40 +56,81 @@ if(isset($_POST['enviar'])){
         $stmt->execute();
         $resultado = $stmt->get_result();
         $row = $resultado->fetch_assoc();
+        if(!$row){
+            echo "Error: No se encontró la mascota con el nombre y cédula proporcionados.";
+            exit();
+        }
         $id_mascota = $row["idMascota"];
 
-
-        // Hacer la inserción de los datos registrados en el formulario en la tabla "historialclinico"
+        // Inserción en la tabla "historialclinico"
         $query_cita = "INSERT INTO historialclinico (Fecha_Visita, cedula, nombreA, idMascota) VALUES (?, ?, ?, ?)";
         $stmt = $con->prepare($query_cita);
         $stmt->bind_param("sisi", $fecha, $cedula, $nombreA, $id_mascota);
         $stmt->execute();
+        if($stmt->error){
+            die('Error: ' . $stmt->error);
+        }
         $id_historial = $stmt->insert_id;
 
-        // Array de servicios
+        // Inserción en "detallehistorialclinico"
         if(isset($_POST['servicios'])){
             $servicios_seleccionados = $_POST['servicios'];
             foreach($servicios_seleccionados as $servicio){
                 $nom_servicio = obtener_servicio($servicio);
                 $id_servicio = obtener_id_servicio($nom_servicio);
+                if($id_servicio === null) {
+                    echo "Error: No se encontró el servicio $nom_servicio en la base de datos.";
+                    exit();
+                }
 
                 $query_detalle = "INSERT INTO detallehistorialclinico (idHistorialClinico, idServicio) VALUES (?, ?)";
                 $stmt_detalle = $con->prepare($query_detalle);
                 $stmt_detalle->bind_param("ii", $id_historial, $id_servicio);
                 $stmt_detalle->execute();
+                if($stmt_detalle->error){
+                    die('Error: ' . $stmt_detalle->error);
+                }
             }
         }
-        if($id_servicio === null) {
-            echo "Error: No se encontró el servicio $nom_servicio en la base de datos.";
+
+        // Consulta para obtener la fecha de visita, nombre de la mascota y cédula
+        // **Nuevo Bloque de Código**
+        $query_obtener_datos = "SELECT hc.Fecha_Visita, m.nombreA AS nombreMascota, c.cedula
+                                FROM historialclinico hc 
+                                JOIN mascota m ON hc.idMascota = m.idMascota
+                                JOIN cliente c ON hc.cedula = c.cedula
+                                WHERE hc.idHistorialClinico = ?";
+        $stmt = $con->prepare($query_obtener_datos);
+        $stmt->bind_param("i", $id_historial);  
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if(!$row){
+            echo "Error: No se encontró el historial clínico con el ID proporcionado.";
             exit();
+        }
+        
+        $fecha_visita = $row['Fecha_Visita'];
+        $nombreA = $row['nombreMascota'];
+        $cedula = $row['cedula'];
+
+        // Generar un número de expediente aleatorio
+        $expediente = rand(1000, 9999);
+
+        // Inserción en la tabla "facturas"
+        // **Nuevo Bloque de Código**
+        $query_factura = "INSERT INTO facturas(Factura_Nº, Fecha_Emision, nombreA, estado, cedula) VALUES(?, ?, ?, ?, ?)";
+        $stmt_factura = $con->prepare($query_factura);
+        $estado = 1; // Estado predeterminado
+        $stmt_factura->bind_param("issii", $expediente, $fecha_visita, $nombreA, $estado, $cedula);
+        $stmt_factura->execute();
+        if($stmt_factura->error){
+            die('Error: ' . $stmt_factura->error);
         }
 
-        if(!$stmt->error){
-            header('Location: index.php?mensaje='.urlencode("Cita programada correctamente"));
-            exit();
-        } else {
-            die('Error: ' . $stmt->error);
-        }
+        // Redirección con mensaje de éxito
+        header('Location: index.php?mensaje='.urlencode("Cita programada correctamente y factura generada"));
+        exit();
     }
 }
 ?>
